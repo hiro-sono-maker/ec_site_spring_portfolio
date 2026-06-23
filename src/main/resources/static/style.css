@@ -1,0 +1,132 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #eaeded;
+}
+
+/* ヘッダー */
+.header {
+  background-color: #131921;
+  color: white;
+  padding: 15px;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+/* 商品リストのコンテナ */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* 商品カード（基本＋アニメーション） */
+.product-card {
+  background-color: white;
+  width: 250px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px gray;
+  transition: all 0.3s ease;
+  /* transitionはここに1回書けばOK */
+}
+
+/* 商品カード：ホバー時 */
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 商品カード内の要素 */
+.product-card h3 {
+  color: black;
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  /* 画像のアニメーション */
+}
+
+/* 商品カード：ホバー時の画像 */
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* その他パーツ */
+.price {
+  color: #B12704;
+  /* 重複していたので新しい方の色に統一 */
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.stock {
+  color: green;
+}
+
+.button {
+  background-color: #ffd814;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.reset-link {
+  display: inline-block;
+  margin-left: 10px;
+  text-decoration: none;
+  color: #007185;
+}
+
+.reset-link:hover {
+  color: #c7511f;
+  text-decoration: underline;
+}
+
+/* --- テーブルのスタイル --- */
+table th {
+  background-color: #232f3e;
+  color: white;
+  padding: 10px;
+}
+
+table td {
+  padding: 10px;
+}
+
+/* --- 【修正】購入するボタンのスタイル --- */
+.amazon-button {
+  background-color: #ffd814;
+  /* 基本の黄色 */
+  border: 1px solid #a88734;
+  /* 少し濃い縁取りにするとAmazon風になります */
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #111;
+  /* 文字色を濃いグレーに */
+  transition: background-color 0.2s ease;
+}
+
+/* マウスを乗せたときに少し濃い黄色にする */
+.amazon-button:hover {
+  background-color: #f7ca00;
+}
+
+table img {
+  object-fit: contain;
+  border-radius: 5px;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+   <meta charset="UTF-8">
+   <title>管理者ログイン</title>
+   <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<h1>管理者ログイン</h1>
+
+
+<form action="/admin/login" method="post">
+   管理者ID
+    <input type="text" name="loginId">
+     <br><br>
+      パスワード
+       <input type="password"
+    name="password">
+     <br><br>
+      <button type="submit">
+         ログイン
+         </button> </form>
+         </body>
+
+         </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>商品登録</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+
+<body>
+
+  <h1>商品登録</h1>
+
+  <form action="/admin/product/add"
+        method="post"
+        enctype="multipart/form-data">
+
+    <p>
+      商品コード
+      <input type="text" name="productId">
+    </p>
+
+    <p>
+      商品名
+      <input type="text" name="productName">
+    </p>
+
+    <p>
+      価格
+      <input type="number" name="price">
+    </p>
+
+    <p>
+      在庫
+      <input type="number" name="stock">
+    </p>
+
+    <p>
+      商品画像
+      <input type="file" name="image">
+    </p>
+
+    <button type="submit">
+      登録
+    </button>
+
+  </form>
+
+</body>
+
+<a href="/admin">
+  管理画面へ戻る
+</a>
+
+</html>

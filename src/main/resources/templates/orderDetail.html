@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>注文詳細</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+
+<body>
+
+  <h1>注文詳細</h1>
+
+  <h2>
+    注文番号 :
+    <span th:text="${orderId}"></span>
+  </h2>
+
+  <table border="1">
+    <tr>
+      <th>画像</th>
+      <th>商品名</th>
+      <th>価格</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+
+    <tr th:each="detail : ${details}">
+
+      <td>
+        <img th:src="@{/image/{id}(id=${detail.productId})}" width="100">
+      </td>
+
+      <td th:text="${detail.productName}">
+      </td>
+
+      <td>
+        ¥<span th:text="${#numbers.formatInteger(detail.price, 0, 'COMMA')}">
+        </span>
+      </td>
+
+      <td th:text="${detail.quantity}">
+      </td>
+
+      <td>
+        ¥<span th:text="${#numbers.formatInteger(detail.price * detail.quantity, 0, 'COMMA')}">
+        </span>
+      </td>
+    </tr>
+
+  </table>
+
+  <br>
+<h2>
+  合計金額 :
+  ¥<span th:text="${#numbers.formatInteger(total, 0, 'COMMA')}">
+  </span>
+</h2>
+
+
+  <a href="/history">
+    <button class="amazon-button">
+      購入履歴へ戻る
+    </button>
+  </a>
+
+</body>
+
+
+</html>

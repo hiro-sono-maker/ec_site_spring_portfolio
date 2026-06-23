@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>購入履歴</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+  <h1>購入履歴</h1>
+
+  <table border="1">
+    <tr>
+      <th>注文番号</th>
+      <th>注文日</th>
+      <th>詳細</th>
+    </tr>
+
+    <tr th:each="order : ${orders}">
+      <td th:text="${order.orderId}">
+      </td>
+
+      <td th:text="${order.orderDate}">
+      </td>
+
+      <td>
+        <a th:href="@{/orderDetail(orderId=${order.orderId})}">
+          詳細
+        </a>
+      </td>
+    </tr>
+
+  </table>
+
+  <br>
+
+  <a href="/mypage">
+    <button class="amazon-button">
+      マイページへ戻る
+    </button>
+  </a>
+
+</body>
+
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>商品編集</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+  <h1>商品編集</h1>
+
+  <form action="/admin/product/edit" method="post"
+    enctype="multipart/form-data">
+
+    <input type="hidden" name="productId" th:value="${product.productId}">
+
+    <p>
+      商品コード：
+      <span th:text="${product.productId}">
+      </span>
+    </p>
+
+    <p>
+      商品名：
+      <input type="text" name="productName" th:value="${product.productName}">
+    </p>
+
+    <p>
+      価格：
+      <input type="number" name="price" th:value="${product.price}">
+    </p>
+
+    <p>
+      在庫：
+      <input type="number" name="stock" th:value="${product.stock}">
+    </p>
+
+    <p>
+      商品画像：
+      <input type="file" name="image">
+    </p>
+
+    <button type="submit">
+      更新
+    </button>
+  </form>
+
+</body>
+
+
+</html>

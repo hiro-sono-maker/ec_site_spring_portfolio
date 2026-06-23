@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>カート</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+  <a href="/EC">
+    🏠 商品一覧
+  </a>
+
+  <a href="/cart">
+    🛒 カート
+  </a>
+
+  <a href="/mypage">
+    マイページ
+  </a>
+
+  <a href="/logout">
+    ログアウト
+  </a>
+  <h1>🛒 カート</h1>
+
+  <h2>
+    合計金額 :
+    ¥<span th:text="${#numbers.formatInteger(total, 0, 'COMMA')}"></span>
+  </h2>
+
+  <form action="/purchaseConfirm" method="get">
+
+      <button type="submit" class="amazon-button">
+        購入する
+      </button>
+
+  </form>
+
+  <br>
+
+  <table border="1" style="background-color: white;
+                width: 100%;
+                border-collapse: collapse;">
+
+    <tr>
+      <th>画像</th>
+      <th>商品名</th>
+      <th>価格</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+
+    <tr th:each="item, iterStat : ${cart}">
+
+        <td> <img th:src="@{/cart/image/{index}(index=${iterStat.index})}" width="100"> </td>
+
+
+      <td th:text="${item.productName}">
+      </td>
+
+      <td>
+        ¥<span th:text="${#numbers.formatInteger(item.price, 0, 'COMMA')}"></span>
+      </td>
+
+      <td>
+
+        <div style="display:flex; align-items:center; gap:5px;">
+          <form action="/cart/minus" method="post"> <input type="hidden" name="index" th:value="${iterStat.index}"> <button
+              type="submit"> － </button> </form> <span th:text="${item.quantity}"> </span>
+          <form action="/cart/plus" method="post"> <input type="hidden" name="index" th:value="${iterStat.index}"> <button
+              type="submit"> ＋ </button> </form>
+        </div>
+
+      </td>
+        <td>
+          ¥<span th:text="${#numbers.formatInteger(item.price, 0, 'COMMA')}"></span>
+        </td>
+    </tr>
+
+  </table>
+
+  <br>
+
+  <a href="/EC" class="reset-link">
+    🏠 商品一覧へ戻る
+  </a>
+
+
+</body>
+
+</html>

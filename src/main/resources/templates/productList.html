@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>商品一覧</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+  <h1>商品一覧</h1>
+
+  <table border="1">
+
+    <tr>
+      <th>画像</th>
+      <th>商品コード</th>
+      <th>商品名</th>
+      <th>価格</th>
+      <th>在庫</th>
+      <th>操作</th>
+    </tr>
+
+    <tr th:each="product : ${products}">
+
+      <td>
+        <img th:src="@{/image/{id}(id=${product.productId})}" width="100">
+      </td>
+
+      <td th:text="${product.productId}">
+      </td>
+
+      <td th:text="${product.productName}">
+      </td>
+
+      <td>
+        ¥<span th:text="${#numbers.formatInteger(product.price, 0, 'COMMA')}">
+        </span>
+      </td>
+
+      <td>
+        <span th:text="${#numbers.formatInteger(product.stock, 0, 'COMMA')}">
+        </span>
+      </td>
+
+      <td>
+
+        <a th:href="@{/admin/product/edit(productId=${product.productId})}">
+          編集
+        </a>
+
+        &nbsp;
+
+        <span th:if="${product.active}">
+          販売中
+        </span>
+
+        <span th:unless="${product.active}">
+          販売停止
+        </span>
+        <a th:if="${product.active}" th:href="@{/admin/product/stop(productId=${product.productId})}">
+          販売停止
+        </a>
+
+        <a th:unless="${product.active}" th:href="@{/admin/product/start(productId=${product.productId})}">
+          販売再開
+        </a>
+
+      </td>
+
+    </tr>
+
+  </table>
+
+  <br>
+  <a href="/admin">
+    管理画面へ戻る
+  </a>
+</body>
+
+
+</html>

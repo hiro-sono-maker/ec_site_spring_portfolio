@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>管理画面</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+  <h1>管理画面</h1>
+
+  <p>
+    <a href="/admin/product/list">
+      <button class="amazon-button">
+        商品一覧
+      </button>
+    </a>
+  </p>
+
+  <p>
+    <a href="/admin/product/add">
+
+      <button class="amazon-button">
+        商品登録
+      </button>
+    </a>
+  </p>
+<form action="/admin/logout"
+      method="get">
+    <button type="submit">
+      管理者ログアウト
+    </button>
+    </form>
+
+
+</body>
+
+</html>
